@@ -230,7 +230,7 @@
 <main>
 
   <p class="lead">Gym Regular counts your gym visits on your phone. There is no account, no server of ours, no advertising and no measurement of how you use the app.</p>
-  <p class="meta"><strong>Last updated:</strong> 21 September 2026</p>
+  <p class="meta"><strong>Last updated:</strong> 26 September 2026</p>
 
   <div class="balance">
     <p><strong>Stays on your device:</strong> places, visits, notes, goals, pauses, memberships and settings.</p>
@@ -281,7 +281,7 @@
     <li><strong>Map tiles (OpenStreetMap):</strong> the map you use to place or check a place loads its image tiles from <code>tile.openstreetmap.org</code>. Each request names the tile being loaded, which together with the other tiles describes the map section you are looking at, and carries a User-Agent header identifying the app by its application id. OpenStreetMap sees your IP address, as any server does when your device requests something from it. The map is shown only during place setup and in "edit place"; the app loads no tiles at any other time.</li>
     <li><strong>Address search (OpenStreetMap Nominatim):</strong> if you type into the address field during place setup, the app sends your search text to <code>nominatim.openstreetmap.org</code> after a short typing pause. The request also carries <strong>the map section currently shown</strong> as a search preference, a User-Agent header identifying the app by name, version and application id, and an Accept-Language header reflecting the language the app is running in. The User-Agent also contains the developer contact address in section 14, because the Nominatim usage policy asks for a way to reach whoever runs the application; it identifies us, never you. OpenStreetMap sees your IP address here as well. The app sends at most one such request per second and never searches in the background.</li>
   </ul>
-  <p><strong>What this means in plain terms.</strong> The map section is an approximate location. If you tapped "My position" before searching, the section shown is the area you are standing in, so an approximate location leaves your device while you set up or edit a place, even though no part of the app ever sends your coordinates as such. This is different from the location used for detection, which is evaluated on the device and never leaves it. Both statements are true, and neither replaces the other.</p>
+  <p><strong>What this means in plain terms.</strong> The map section is a location. At the zoom the map uses it covers about one square kilometre or less, which Google Play counts as precise location, and the Data safety section of the store listing declares it that way. If you tapped "My position" before searching, the section shown is the area you are standing in, so this location leaves your device while you set up or edit a place, even though no part of the app ever sends your coordinates as such. This is different from the location used for detection, which is evaluated on the device and never leaves it. Both statements are true, and neither replaces the other.</p>
   <p>OpenStreetMap may log these requests under its own terms; see the <a href="https://wiki.osmfoundation.org/wiki/Privacy_Policy">OpenStreetMap Foundation privacy policy</a>.</p>
   <p>Beyond those two, data leaves your device only when you decide it should:</p>
   <ul>
