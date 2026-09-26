@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gym Regular - Privacy Policy</title>
+  <meta name="description" content="Privacy Policy for Gym Regular, a local-first Android app that counts your gym visits automatically. No account, no server, no ads.">
+  <meta name="color-scheme" content="light dark">
+  <link rel="icon" type="image/png" href="icon.png">
+  <link rel="preload" href="fonts/BricolageGrotesque-Variable.ttf" as="font" type="font/ttf" crossorigin>
+  <style>
+    /* Die Schriften liegen neben der Seite, nicht bei einem
+       Schriftdienst: eine Datenschutzseite, die beim Aufrufen die
+       IP-Adresse des Lesers zu einem Dritten traegt, widerspricht dem,
+       was sie erklaert. Diese Seite laedt nichts von ausserhalb. */
+    @font-face {
+      font-family: 'Bricolage Grotesque';
+      src: url('fonts/BricolageGrotesque-Variable.ttf') format('truetype-variations');
+      font-weight: 200 800;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Newsreader';
+      src: url('fonts/Newsreader-Variable.ttf') format('truetype-variations');
+      font-weight: 200 800;
+      font-display: swap;
+    }
+
+    /* Die Palette der App (lib/config/theme.dart). Zwei Regeln tragen
+       sie: Rot heisst Anwesenheit und sonst nichts, und alles
+       Bedienbare ist Tinte. Darum traegt auf dieser Seite kein Link
+       und keine Ueberschrift die Signalfarbe. */
+    :root {
+      --ink: #1B1F27;
+      --presence: #D2321F;
+      --paper: #F3F4F6;
+      --surface: #FFFFFF;
+      --muted: #5F6675;
+      --line: #C8CDD5;
+      --edge: #7F8794;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --ink: #EEF0F3;
+        --presence: #F0574A;
+        --paper: #14171C;
+        --surface: #1E2229;
+        --muted: #9BA3AF;
+        --line: #363E49;
+        --edge: #7B838F;
+      }
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: 'Bricolage Grotesque', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-size: 17px;
+      line-height: 1.55;
+      font-variant-numeric: tabular-nums;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    header {
+      padding: 56px 20px 36px;
+      text-align: center;
+      border-bottom: 1px solid var(--line);
+    }
+    header img {
+      width: 64px;
+      height: 64px;
+      border-radius: 16px;
+      display: block;
+      margin: 0 auto 18px;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 34px;
+      font-weight: 600;
+      letter-spacing: -0.6px;
+      line-height: 1.15;
+    }
+    header p {
+      margin: 6px 0 0;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    /* Die Woche als Scheiben, die Bildsprache der App: eine gefuellte
+       Scheibe ist ein Besuch, ein Ring ein Heimtraining, eine leere
+       Stelle ein Tag ohne Training. */
+    .week {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin: 26px 0 0;
+    }
+    .week span {
+      width: 13px;
+      height: 13px;
+      border-radius: 50%;
+      display: block;
+    }
+    .week .on { background: var(--presence); }
+    .week .ring { border: 2px solid var(--presence); }
+    .week .off { border: 1px solid var(--edge); }
+
+    main {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 40px 20px 72px;
+    }
+
+    .lead {
+      font-family: 'Newsreader', Georgia, serif;
+      font-size: 21px;
+      line-height: 1.5;
+      margin: 0 0 8px;
+    }
+    .meta {
+      color: var(--muted);
+      font-size: 14px;
+      margin: 0 0 32px;
+    }
+
+    /* Die Bilanz, wie sie in der App ueber der Datenschutzseite steht:
+       was bleibt, was hinausgeht, was es nicht gibt. */
+    .balance {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 22px 24px;
+      margin: 0 0 40px;
+    }
+    .balance p { margin: 0 0 12px; }
+    .balance p:last-child { margin-bottom: 0; }
+    .balance strong { font-weight: 600; }
+
+    h2 {
+      font-size: 22px;
+      font-weight: 600;
+      letter-spacing: -0.3px;
+      line-height: 1.25;
+      margin: 44px 0 6px;
+      padding-top: 22px;
+      border-top: 1px solid var(--line);
+    }
+    h3 {
+      font-size: 17px;
+      font-weight: 600;
+      margin: 28px 0 4px;
+    }
+    p, li { font-size: 17px; }
+    p { margin: 12px 0; }
+    ul { padding-left: 22px; margin: 12px 0; }
+    li { margin-bottom: 10px; }
+    ul ul { margin: 8px 0 0; }
+    strong { font-weight: 600; }
+
+    a {
+      color: var(--ink);
+      text-decoration: underline;
+      text-decoration-color: var(--edge);
+      text-underline-offset: 3px;
+    }
+    a:hover { text-decoration-color: var(--ink); }
+
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.9em;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 5px;
+      padding: 1px 5px;
+    }
+
+    .contact {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      /* Tinte, nicht die Signalfarbe: Rot gehoert in dieser Bildsprache
+         der Anwesenheit, und ein Kontaktkasten ist keine. */
+      border-left: 3px solid var(--ink);
+      border-radius: 12px;
+      padding: 18px 22px;
+      margin: 16px 0 0;
+    }
+    .contact p { margin: 0; }
+    .contact p + p { margin-top: 8px; }
+
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 28px 20px 44px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    @media (max-width: 600px) {
+      body { font-size: 16px; }
+      header { padding: 40px 16px 30px; }
+      header h1 { font-size: 27px; }
+      main { padding: 30px 16px 56px; }
+      .lead { font-size: 19px; }
+      h2 { font-size: 20px; margin-top: 36px; }
+      p, li { font-size: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <img src="icon.png" alt="Gym Regular icon" onerror="this.style.display='none'">
+  <h1>Gym Regular</h1>
+  <p>Privacy Policy</p>
+  <div class="week" aria-hidden="true">
+    <span class="on"></span>
+    <span class="off"></span>
+    <span class="on"></span>
+    <span class="off"></span>
+    <span class="ring"></span>
+    <span class="on"></span>
+    <span class="off"></span>
+  </div>
+</header>
+
+<main>
+
+  <p class="lead">Gym Regular counts your gym visits on your phone. There is no account, no server of ours, no advertising and no measurement of how you use the app.</p>
+  <p class="meta"><strong>Last updated:</strong> 21 September 2026</p>
+
+  <div class="balance">
+    <p><strong>Stays on your device:</strong> places, visits, notes, goals, pauses, memberships and settings.</p>
+    <p><strong>Leaves your device:</strong> the map and the address search while you set up or edit a place. Backup, CSV export and diagnostics bundle only when you pass them on yourself.</p>
+    <p><strong>Does not exist:</strong> account, server, advertising, measurement of your use, stored location.</p>
+  </div>
+
+  <p>Gym Regular ("the app") is a local-first gym attendance app for Android. It counts your gym visits automatically, using places you configure yourself and the Android geofencing system, and it keeps one free-text note per visit. This Privacy Policy explains what data the app handles, how it is used, your rights, and how to contact us.</p>
+  <p>There is no account, no sign-in, no server operated by us, no advertising and no product analytics. Everything the app records stays in its own storage on your device unless you export or share it yourself.</p>
+
+  <h2>1. Who we are</h2>
+  <p>Gym Regular is published by:</p>
+  <ul>
+    <li><strong>Name:</strong> Ivan Knezevic</li>
+    <li><strong>Country:</strong> Switzerland</li>
+    <li><strong>Contact e-mail:</strong> <a href="mailto:i.knezevic@gmx.ch">i.knezevic@gmx.ch</a></li>
+  </ul>
+  <p>For the purposes of GDPR and the Swiss Federal Act on Data Protection (FADP/revDSG), Ivan Knezevic acts as data controller for any personal data this Privacy Policy covers.</p>
+
+  <h3>Independent application notice</h3>
+  <p>Gym Regular is an independent application developed by Ivan Knezevic in Switzerland. It is not affiliated with, endorsed by, sponsored by or otherwise connected to any gym, fitness studio chain, equipment manufacturer, or the publisher of any other fitness, workout or habit-tracking application. The words "gym" and "regular" are generic English terms - one for the place, one for the habit of showing up - and are used here in that descriptive sense.</p>
+  <p>The app does not connect to any gym operator's membership or access-control system. The membership feature is a fee amount you type in yourself so the app can show you a cost per visit; it is a number in your own database and nothing else.</p>
+
+  <h2>2. Data the app handles on your device</h2>
+  <p>Gym Regular is designed local-first. The following data categories are created and stored on your device only, in the app's own database and in the app's own preference storage:</p>
+  <ul>
+    <li><strong>Places you configure:</strong> the name you give a place, its latitude and longitude, the detection radius, the activity you assign to it, whether it is active, and how it is detected.</li>
+    <li><strong>Location readings for detection:</strong> while detection is active, the app reads the device location in the foreground and in the background and compares it, on the device, with the places you configured. These readings are <strong>not stored as coordinates</strong> and are <strong>not transmitted</strong>. What the app keeps from them is the result: timestamps, the place concerned, and counters the detection needs in order to survive a restart.</li>
+    <li><strong>Visits:</strong> start and end time, the place (or the note that it was a home workout or another place), a training type you may assign, your free-text note, the local date and time zone of the visit, how the visit came about (automatically or entered by hand), whether you confirmed it, and whether it was edited or deleted.</li>
+    <li><strong>Goals and pauses:</strong> how many training days per week you aim for, the joker rule, and any pauses you record together with the reason you type.</li>
+    <li><strong>Memberships and fees:</strong> a membership name, a currency, the fee amount you enter and the months it applies to.</li>
+    <li><strong>Recording periods:</strong> when automatic detection was running, when it was interrupted, and why, so that a gap in the record is visible as a gap instead of as a week without training.</li>
+    <li><strong>Detection log:</strong> the most recent detection events with their time, the place involved and a short technical detail such as a distance in metres or a reason code. The app keeps at most the last 500 of these entries.</li>
+    <li><strong>Change history of your visits:</strong> which visit was created, changed or deleted, and when.</li>
+    <li><strong>Training types:</strong> the labels you create yourself, for example Push, Pull, Legs. The app deliberately stores no exercises, sets, weights or training plans; it counts visits and holds one note.</li>
+    <li><strong>Settings:</strong> your goal, notification settings, theme, language, what the home-screen widget shows, and similar preferences.</li>
+    <li><strong>Files you create:</strong> the backup file, the CSV export and the diagnostics bundle, which exist only when you create them (see section 3).</li>
+  </ul>
+
+  <h3>A note on health-related data</h3>
+  <p>Some of this is data about your body and your habits: when and how often you train, which training type you assign, and whatever you write in a note. Depending on what you write, a note can say more than the app ever asks for.</p>
+  <p>This data is generated by you, stored in the app's private storage on your device, and is not transmitted to us or to any third party. We never see it. It is your choice whether you write anything sensitive in a note, and you can edit or delete any visit and its note at any time.</p>
+
+  <h2>3. Data the app may send off your device</h2>
+  <p>Gym Regular does not transmit your visits, your notes, your goals, your places or the location readings used for detection. There is no account, no synchronisation, no analytics SDK, no advertising SDK and no crash-reporting service in this app.</p>
+  <p>There are exactly two places where the app itself contacts a service on the internet, and both happen only while you are setting up or editing a place:</p>
+  <ul>
+    <li><strong>Map tiles (OpenStreetMap):</strong> the map you use to place or check a place loads its image tiles from <code>tile.openstreetmap.org</code>. Each request names the tile being loaded, which together with the other tiles describes the map section you are looking at, and carries a User-Agent header identifying the app by its application id. OpenStreetMap sees your IP address, as any server does when your device requests something from it. The map is shown only during place setup and in "edit place"; the app loads no tiles at any other time.</li>
+    <li><strong>Address search (OpenStreetMap Nominatim):</strong> if you type into the address field during place setup, the app sends your search text to <code>nominatim.openstreetmap.org</code> after a short typing pause. The request also carries <strong>the map section currently shown</strong> as a search preference, a User-Agent header identifying the app by name, version and application id, and an Accept-Language header reflecting the language the app is running in. The User-Agent also contains the developer contact address in section 14, because the Nominatim usage policy asks for a way to reach whoever runs the application; it identifies us, never you. OpenStreetMap sees your IP address here as well. The app sends at most one such request per second and never searches in the background.</li>
+  </ul>
+  <p><strong>What this means in plain terms.</strong> The map section is an approximate location. If you tapped "My position" before searching, the section shown is the area you are standing in, so an approximate location leaves your device while you set up or edit a place, even though no part of the app ever sends your coordinates as such. This is different from the location used for detection, which is evaluated on the device and never leaves it. Both statements are true, and neither replaces the other.</p>
+  <p>OpenStreetMap may log these requests under its own terms; see the <a href="https://wiki.osmfoundation.org/wiki/Privacy_Policy">OpenStreetMap Foundation privacy policy</a>.</p>
+  <p>Beyond those two, data leaves your device only when you decide it should:</p>
+  <ul>
+    <li><strong>Backups, CSV exports and diagnostics bundles:</strong> the app writes the file and hands it to Android's own share or save dialog. Where it goes from there is your choice, and the app or service you pick handles it under its own terms. The backup contains everything listed in section 2. The CSV export contains your visits including your notes. The diagnostics bundle contains the app version, system details and the recent detection events; it identifies places by number rather than by name and contains no notes, no place names and no coordinates. The app shows you the full text of the diagnostics bundle before you share it.</li>
+    <li><strong>App rating prompt (Google Play in-app review):</strong> once you have used the app for a while, Gym Regular asks Google Play on its own whether a rating dialog may be shown, and requests that dialog if so. <strong>No app data is transmitted with this: no locations, no visits, no notes, no identifiers.</strong> Whether the dialog appears at all is decided by Google Play; the app is told neither that nor whether you left a rating. The conditions leading up to the request are counted locally on your device, and the prompt is requested at most once per installation.</li>
+  </ul>
+
+  <h2>4. Permissions and why we ask for them</h2>
+  <ul>
+    <li><strong>Location (while using the app and in the background):</strong> Gym Regular collects location data to count your visits and send you a notification after your workout, even when the app is closed or not in use. The location is only ever compared, on the device, with the places you configured. Without background location the app cannot count visits by itself; it stays fully usable, and you record visits by hand.</li>
+    <li><strong>Precise location:</strong> Android lets you grant an approximate location instead. A gym is detected within a radius of around 150 metres, which an approximate location cannot resolve, so reliable automatic detection needs the precise setting.</li>
+    <li><strong>Notifications:</strong> used to tell you that the app noticed your arrival, that a visit was saved, to ask you about a stay it is not sure of, to point out a problem with automatic detection, and for the optional weekly recap. All of these are produced on your device from data that is already there, and they send nothing anywhere.</li>
+    <li><strong>Run at start-up and keep the device awake:</strong> used to re-arm the geofences after a restart and to finish a short background check. They carry no data.</li>
+    <li><strong>Internet:</strong> used only for the two requests described in section 3.</li>
+    <li><strong>Battery-optimization exemption (optional):</strong> improves background reliability on Android devices that aggressively stop background tasks.</li>
+    <li><strong>Share intents:</strong> used only when you export or share a file yourself.</li>
+  </ul>
+
+  <h2>5. Legal basis for processing (GDPR / FADP)</h2>
+  <p>Processing the location readings and visit data on your device is necessary to provide the core functionality you asked for when you set up a place and switched on automatic detection (Art. 6(1)(b) GDPR / Art. 31(2)(a) revDSG: contractual necessity). You choose whether to use automatic detection at all; the app works without it.</p>
+  <p>When you open the map or type into the address search during place setup, the tile requests and the search request are sent to OpenStreetMap on the basis of that action of yours (Art. 6(1)(b) GDPR).</p>
+  <p>Any notes you write are content you create yourself. They stay on your device, and we process them in no way whatsoever.</p>
+
+  <h2>6. Data retention</h2>
+  <ul>
+    <li>Data stored on your device remains until you delete it in the app, clear the app's storage in Android Settings, or uninstall the app.</li>
+    <li><strong>Deleted visits are not gone at once.</strong> A visit you delete, or mark as one you were not there for, stays recoverable for seven days under Settings, section Data, "Recently discarded". After that only a marker remains, which carries neither your note nor the times. The marker is kept on purpose, so that restoring an older backup cannot resurrect a visit you deleted.</li>
+    <li>The detection log is capped: the app keeps at most the 500 most recent detection events and drops older ones.</li>
+    <li>Map tile and address search requests are sent to OpenStreetMap at the moment you trigger them. The app keeps no search history. Whatever OpenStreetMap logs on its own servers is governed by OpenStreetMap's retention policy.</li>
+    <li>Backup, CSV and diagnostics files live wherever you saved or sent them. The app cannot reach them afterwards and cannot delete them for you.</li>
+  </ul>
+
+  <h2>7. Your rights</h2>
+  <p>Under GDPR and the Swiss FADP, you have the right to:</p>
+  <ul>
+    <li>request access, rectification, or deletion of any personal data we process,</li>
+    <li>restrict or object to processing,</li>
+    <li>data portability,</li>
+    <li>lodge a complaint with the supervisory authority responsible for your location:
+      <ul>
+        <li>Switzerland: Federal Data Protection and Information Commissioner (FDPIC), <a href="https://www.edoeb.admin.ch">edoeb.admin.ch</a></li>
+        <li>EU: your local data protection authority.</li>
+      </ul>
+    </li>
+  </ul>
+  <p>Because Gym Regular has no accounts, collects no identifiers, and keeps every visit, note and place on your device, we normally hold no personal data about you at all that we could access, correct or erase. Your right of access is served by the app itself: everything it knows about you is visible in it, and the backup and CSV export give you the whole record in a portable form. If you believe we nevertheless hold personal data about you - for example because you wrote to the support e-mail or sent us a diagnostics bundle - please contact us at the address above.</p>
+
+  <h2>8. Account deletion and data deletion</h2>
+  <p>Gym Regular does not require an account, so there is no account to delete.</p>
+  <ul>
+    <li><strong>Delete everything inside the app:</strong> Settings, section Data, "Delete all data". The app tells you how many visits and notes this concerns and offers to make a backup first.</li>
+    <li><strong>Delete a single visit or note:</strong> open the visit and delete it, or clear the note. See section 6 for the seven days during which a deleted visit can still be brought back.</li>
+    <li><strong>Delete everything by uninstalling:</strong> Android Settings &gt; Apps &gt; Gym Regular &gt; Uninstall. Uninstalling removes the local database. The app also switches off Android's automatic app backup, so no copy of your data is kept in a cloud backup that could outlive the uninstall.</li>
+    <li><strong>Address search logs:</strong> the app stores no search history. Logs OpenStreetMap may keep on its servers are governed by OpenStreetMap's privacy policy.</li>
+  </ul>
+
+  <h2>9. Children's privacy</h2>
+  <p>Gym Regular is not directed to children under the age of 13 (or 16 in jurisdictions where that is the applicable threshold). The app does not knowingly collect personal data from children.</p>
+
+  <h2>10. International data transfers</h2>
+  <p>The map tile and address search requests described in section 3 are handled by the OpenStreetMap Foundation's infrastructure, which may be located outside Switzerland and outside the EU/EEA. See the <a href="https://wiki.osmfoundation.org/wiki/Privacy_Policy">OpenStreetMap Foundation privacy policy</a> for details. No other data leaves your device by itself, so no other transfer takes place.</p>
+
+  <h2>11. Third-party services</h2>
+  <ul>
+    <li><strong>Google Play Services:</strong> required on Android for the geofencing API that detects arrival and departure. Detection runs on the device; entry and exit events are delivered locally by the operating system. Google Play is also used for the rating flow described in section 3, which transmits no app data.</li>
+    <li><strong>OpenStreetMap:</strong> map tiles during place setup, and the Nominatim address search when you type into the search field. Both are described in section 3.</li>
+  </ul>
+  <p>These providers process data under their own privacy policies. Gym Regular enables no analytics, advertising or crash-reporting SDK.</p>
+
+  <h2>12. Security</h2>
+  <p>Your data lives in the app's private storage, which Android keeps separate from other apps. The database is a local SQLite file in that private area, and settings are stored in Android's app preferences. The app adds no encryption of its own on top of that, and it stores no passwords, keys or tokens, because it has no account and no server to authenticate against. We rely on the security mechanisms the Android operating system provides for data at rest on your device.</p>
+  <p>Android's automatic cloud backup is switched off for this app, so your visits are not copied into a Google backup without your knowledge. The consequence is deliberate and worth knowing: if you change phones or uninstall the app, only a backup you created yourself brings your data across.</p>
+
+  <h2>13. Changes to this policy</h2>
+  <p>We may update this Privacy Policy. The "Last updated" date at the top reflects the most recent revision. Material changes will be announced in the app release notes.</p>
+
+  <h2>14. Contact</h2>
+  <p>Privacy questions, data subject requests, and any complaints:</p>
+  <div class="contact">
+    <p><strong>E-mail:</strong> <a href="mailto:i.knezevic@gmx.ch">i.knezevic@gmx.ch</a></p>
+    <p><strong>Postal:</strong> available on request via e-mail.</p>
+  </div>
+
+</main>
+
+<footer>
+  <p>Gym Regular - Ivan Knezevic, Switzerland. This page loads nothing from any other server.</p>
+</footer>
+
+</body>
+</html>
